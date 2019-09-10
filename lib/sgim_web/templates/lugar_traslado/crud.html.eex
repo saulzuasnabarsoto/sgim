@@ -1,0 +1,28 @@
+<div class="w-full flex p-1">
+  <div class="bg-white border p-1">
+    <div class="bg-gold-ext p-1 text-xl text-red-700 flex justify-between items-center">
+        <h3 class="font-bold"><%= @titulo %></h3>
+
+        <div class="text-base text-black ">
+            <span><%= link "Salir", to: Routes.lugar_traslado_path(@conn, :index), class: "text-base px-4 py-1 font-bold leading-none border rounded text-red-700 border-black" %></span>
+        </div>
+
+    </div>
+    <%= if @mode == :new  do %>
+      <%= render "form.html", Map.put(assigns, :action, Routes.lugar_traslado_path(@conn, :create)) %>
+    <% end %>  
+
+    <%= if @mode == :edit  do %>
+      <%= render "form.html", Map.put(assigns, :action, Routes.lugar_traslado_path(@conn, :update, @lugar_traslado)) %>
+    <% end %>  
+  
+    <%= if @mode == :delete  do %>
+        <%= render "form.html", Map.put(assigns, :action, "") %>
+    <% end %>  
+
+    <%= if @mode == :show  do %>
+      <%= render "form.html", Map.put(assigns, :action, "") %>
+    <% end %>  
+
+  </div>
+</div>

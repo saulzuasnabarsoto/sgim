@@ -1,0 +1,24 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @mode == :new || @mode == :edit do %>
+    <div class="pt-2">
+      <%= submit "Grabar", class: "border bg-blue-600 rounded h-10 w-20" %>
+    </div>
+  <% end %>
+  <%= if @mode == :delete  do %>
+    <div class="pt-2">
+        <span><%= link "Eliminar", to: Routes.lugar_traslado_path(@conn, :delete, @lugar_traslado), method: :delete, class: "inline-block text-base px-4 py-2 font-bold leading-none border rounded text-black border-black bg-blue-500" %></span>
+    </div>
+  <% end %>  
+
+  <div class="flex pt-1">
+    <%= label f, :id, "Código:", class: "flex h-8 w-24 items-center" %>
+    <%= text_input f, :id, readonly: true, class: "flex h-8 w-20 border border-black p-1 bg-gray-300" %>
+    <%= error_tag f, :id %>
+  </div>  
+  <div class="flex pt-1">
+    <%= label f, :descripcion, "Descripción: ", class: "flex h-8 w-24 items-center" %>
+    <%= text_input f, :descripcion, readonly: @readonly, class: "flex h-8 w-64 border border-black p-1 uppercase" %>
+    <%= error_tag f, :descripcion %>
+  </div>
+
+<% end %>

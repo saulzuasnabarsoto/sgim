@@ -1,0 +1,22 @@
+/* This file is for your main application css. */
+
+/*@import "./phoenix.css"; */
+@tailwind base;
+@tailwind components;
+
+.bg-green-ext{
+  background-color: #499F42;
+}
+
+.bg-gold-ext{
+  background-color: #F7C33F;
+}
+
+.bg-gray-readonly-true {
+  @apply bg-gray-300;
+}
+
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+
+@tailwind utilities;
