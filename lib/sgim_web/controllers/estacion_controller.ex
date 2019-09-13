@@ -76,7 +76,6 @@ defmodule SgimWeb.EstacionController do
         |> put_flash(:info, "Estación grabado exitosamente.")
         |> redirect(to: Routes.estacion_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
-        IO.puts "No Grabo"
         render(conn, "crud.html", estacion: estacion, changeset: changeset, titulo: titulo, readonly: readonly, mode: mode)
     end
   end

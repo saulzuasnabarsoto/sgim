@@ -2,11 +2,15 @@ defmodule  Sgim.CategoriaPersonal do
   use Ecto.Schema
   import Ecto.Changeset
   alias Sgim.CategoriaPersonal
+  alias Sgim.Personal
 
   @primary_key {:id, :integer, []}
   @derive {Phoenix.Param, key: :id}
   schema "categoria_personals" do
     field :descripcion, :string
+
+    has_many :personals, Personal
+
   end
 
   def changeset(%CategoriaPersonal{}=categoria_personal, attrs) do

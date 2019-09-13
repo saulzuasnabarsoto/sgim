@@ -16,6 +16,22 @@
   @apply bg-gray-300;
 }
 
+.alert {
+  @apply text-3xl;
+}
+.alert-info {
+  @apply bg-blue-700 border ;
+}
+.alert-warning {
+  @apply bg-yellow-700 border ;
+}
+.alert-danger {
+  @apply bg-red-700 border ;
+}
+.alert:empty {
+  @apply hidden;
+}
+
 tr:nth-child(even) {background: #CCC}
 tr:nth-child(odd) {background: #FFF}
 

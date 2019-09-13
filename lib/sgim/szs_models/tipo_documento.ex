@@ -2,11 +2,14 @@ defmodule  Sgim.TipoDocumento do
   use Ecto.Schema
   import Ecto.Changeset
   alias Sgim.TipoDocumento
+  alias Sgim.Personal
 
   @primary_key {:id, :integer, []}
   @derive {Phoenix.Param, key: :id}
   schema "tipo_documentos" do
     field :descripcion, :string
+
+    has_many :personals, Personal
   end
 
   def changeset(%TipoDocumento{}=tipo_documento, attrs) do
