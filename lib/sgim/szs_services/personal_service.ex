@@ -10,10 +10,11 @@ defmodule Sgim.PersonalService do
     search_term = "%#{search_term}%"
 
     query = from t in Personal, where: like(t.id, ^search_term) or like(t.descripcion, ^search_term), order_by: t.id
-    Repo.all(query)
+    Repo.all(query) |> Repo.preload([:tipo_documento, :categoria_personal])
   end
 
-  def record!(id), do: Repo.get!(Personal, id)
+  def record!(id), do: Repo.get!(Personal, id) |> Repo.preload([:tipo_documento, :categoria_personal])
+  def record(id), do: Repo.get(Personal, id) |> Repo.preload([:tipo_documento, :categoria_personal])
 
   def changeset(%Personal{} = personal) do
     Personal.changeset(personal, %{})

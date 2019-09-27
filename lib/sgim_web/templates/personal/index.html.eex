@@ -1,0 +1,51 @@
+
+<div class="w-full flex p-1">
+  <div class="bg-white border p-1">
+    <div class="bg-gold-ext p-1 text-xl text-red-700">
+        <h3 class="font-bold">PERSONAL</h3>
+    </div>
+
+    <div class="bg-blue-700 p-2 text-xl flex justify-center">
+      <%= form_for @conn, Routes.personal_path(@conn, :index), [method: :get, class: "justify-center"], fn f -> %>
+        <%= search_input f, :query, class: "uppercase " %>
+        <%= submit "Buscar", class: "ml-2 pl-2 pr-2 border rounded text-white" %>
+      <% end %>
+    </div>
+
+    <div class="bg-gray-100 p-1 text-xl text-black">
+        <span><%= link "Adicionar", to: Routes.personal_path(@conn, :new), class: "inline-block text-base px-4 py-2 font-bold leading-none border rounded text-black border-black bg-blue-500" %></span>
+    </div>
+    <div class="w-full flex">
+        <table class="w-full text-left">
+          <thead  class="bg-white flex text-black items-center">
+            <tr class="p-1">
+              <th class="border border-black text-base p-1 w-16">Código</th>
+              <th class="border border-black text-base p-1 w-64">Descripción</th>
+
+              <th class="border border-black text-base p-1 w-24">Acción</th>
+            </tr>
+          </thead>
+          <tbody class="flex flex-col items-center overflow-auto h-64" >
+        <%= for personal <- @personals do %>
+            <tr class="flex items-center p-1" >
+              <td class="text-base p-1 w-16"><%= personal.id %></td>
+              <td class="text-base p-1 w-64"><%= personal.descripcion %></td>
+              <td class="text-base p-1 w-24 flex">
+                <a href="<%= Routes.personal_path(@conn, :edit, personal) %>" class="">
+                  <img src="<%= Routes.static_path(@conn, "/images/edit.png") %>" />
+                </a>
+                <a href="<%= Routes.personal_path(@conn, :show, personal) %>" class="pl-1">
+                  <img src="<%= Routes.static_path(@conn, "/images/read.png") %>" />
+                </a>
+                <a href="<%= Routes.personal_path(@conn, :show, personal, delete: true) %>" class="pl-1">
+                  <img src="<%= Routes.static_path(@conn, "/images/delete.png") %>" />
+                </a>
+              </td>
+            </tr>
+        <% end %>
+          </tbody>
+        </table>
+
+    </div>  
+  </div>  
+</div>

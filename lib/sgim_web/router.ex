@@ -33,6 +33,7 @@ defmodule SgimWeb.Router do
     resources "/lugar_traslados", LugarTrasladoController, only: [:index, :new, :create, :edit, :show, :delete, :update]
     resources "/tipo_documentos", TipoDocumentoController, only: [:index, :new, :create, :edit, :show, :delete, :update]
     resources "/categoria_personals", CategoriaPersonalController, only: [:index, :new, :create, :edit, :show, :delete, :update]
+    resources "/personals", PersonalController, only: [:index, :new, :create, :edit, :show, :delete, :update]
 
   end
 

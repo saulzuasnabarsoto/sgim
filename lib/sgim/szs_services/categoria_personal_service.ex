@@ -13,6 +13,11 @@ defmodule Sgim.CategoriaPersonalService do
     Repo.all(query)
   end
 
+  def list do
+    query = from t in CategoriaPersonal
+    Repo.all(query)
+  end
+
   def record!(id), do: Repo.get!(CategoriaPersonal, id)
 
   def changeset(%CategoriaPersonal{} = categoria_personal) do

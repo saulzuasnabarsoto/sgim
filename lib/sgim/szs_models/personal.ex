@@ -17,9 +17,9 @@ defmodule  Sgim.Personal do
 
   def changeset(%Personal{}=personal, attrs) do
     personal
-    |> cast(attrs, [:id, :descripcion, :tipo_documento_id, :numero_documento, :categoria_personal_id])
+    |> cast(attrs, [:id, :descripcion, :tipo_documento_id, :numero_documento, :tipo_documento_id])
     |> change_uppercase()
-    |> validate_required([:id, :descripcion, :tipo_documento_id, :numero_documento, :categoria_personal_id])
+    |> validate_required([:id, :descripcion, :tipo_documento_id, :numero_documento, :tipo_documento_id])
   end
 
   def change_uppercase(changeset) do

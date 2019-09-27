@@ -13,6 +13,12 @@ defmodule Sgim.TipoDocumentoService do
     Repo.all(query)
   end
 
+  def list do
+
+    query = from t in TipoDocumento
+    Repo.all(query)
+  end
+
   def record!(id), do: Repo.get!(TipoDocumento, id)
 
   def changeset(%TipoDocumento{} = tipo_documento) do

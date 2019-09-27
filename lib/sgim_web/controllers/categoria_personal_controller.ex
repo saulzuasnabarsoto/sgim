@@ -27,12 +27,12 @@ defmodule SgimWeb.CategoriaPersonalController do
     with {:ok, _categoria_personal} <- CategoriaPersonalService.create(categoria_personal_params)
     do
       conn
-      |> put_flash(:info, "Categoría Paciente creado exitosamente!")
+      |> put_flash(:info, "Categoría Personal creado exitosamente!")
       |> redirect(to: Routes.categoria_personal_path(conn, :index))
     else
       {:error, _categoria_personal} ->
         conn
-        |> put_flash(:alert, "Error creando Categoría Paciente!")
+        |> put_flash(:alert, "Error creando Categoría Personal!")
         |> redirect(to: Routes.categoria_personal_path(conn, :new))
     end
   end
@@ -73,10 +73,9 @@ defmodule SgimWeb.CategoriaPersonalController do
     case CategoriaPersonalService.update(categoria_personal, categoria_personal_params) do
       {:ok, _categoria_personal} ->
         conn
-        |> put_flash(:info, "Categoría Paciente grabado exitosamente.")
+        |> put_flash(:info, "Categoría Personal grabado exitosamente.")
         |> redirect(to: Routes.categoria_personal_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
-        IO.puts "No Grabo"
         render(conn, "crud.html", categoria_personal: categoria_personal, changeset: changeset, titulo: titulo, readonly: readonly, mode: mode)
     end
   end
@@ -88,7 +87,7 @@ defmodule SgimWeb.CategoriaPersonalController do
     {:ok, _categoria_personal} = CategoriaPersonalService.delete(categoria_personal)
 
     conn
-    |> put_flash(:info, "CategoriaPersonal borrado exitosamente.")
+    |> put_flash(:info, "Categoria Personal borrado exitosamente.")
     |> redirect(to: Routes.categoria_personal_path(conn, :index))
   end
 
